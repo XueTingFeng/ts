@@ -1,10 +1,11 @@
-type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
-  ? 1
-  : 2
-  ? true
-  : false
+// type Equal<X, Y> = (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y
+//   ? 1
+//   : 2
+//   ? true
+//   : false
 
-type Includes<T extends readonly any[], U> = T extends [
+import { Equal } from '@type-challenges/utils'
+export type Includes<T extends readonly any[], U> = T extends [
   infer First,
   ...infer Rest
 ]
@@ -12,3 +13,15 @@ type Includes<T extends readonly any[], U> = T extends [
     ? true
     : Includes<Rest, U>
   : false
+
+
+  //js
+  function includes(list,key){
+    for(let i = 0;i<list.length;i++){
+      const el = list[i]
+      if(el === key){
+        return true
+      }
+    }
+    return false
+  }
